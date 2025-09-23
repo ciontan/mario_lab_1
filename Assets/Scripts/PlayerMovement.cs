@@ -7,7 +7,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 20;
     public float maxSpeed = 20;
-    public float upSpeed = 10;
+    public float jumpForce = 20f;
+    public float holdForce = 6f;
+    public float maxJumpVelocity = 25f;
+    private bool isJumping = false;
     private bool onGroundState = true;
     private Rigidbody2D marioBody;
     private SpriteRenderer marioSprite;
@@ -81,10 +84,33 @@ public class PlayerMovement : MonoBehaviour
             marioBody.linearVelocity = Vector2.zero;
         }
 
+
+        // Making the jump more like the actual mario game
+        // Start jump
         if (Input.GetKeyDown("space") && onGroundState)
         {
-            marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+            marioBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             onGroundState = false;
+            isJumping = true;
+        }
+
+        // Hold jump: apply smaller force while rising
+        if (Input.GetKey("space") && isJumping)
+        {
+            if (marioBody.linearVelocity.y > 0 && marioBody.linearVelocity.y < maxJumpVelocity)
+            {
+                marioBody.AddForce(Vector2.up * holdForce, ForceMode2D.Force);
+            }
+        }
+
+        // Short hop: if released early, cut upward velocity
+        if (Input.GetKeyUp("space"))
+        {
+            if (marioBody.linearVelocity.y > 0)
+            {
+                marioBody.linearVelocity = new Vector2(marioBody.linearVelocity.x, marioBody.linearVelocity.y * 0.25f);
+            }
+            isJumping = false;
         }
     }
 
