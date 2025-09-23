@@ -10,22 +10,16 @@ public class JumpOverGoomba : MonoBehaviour
     private bool onGroundState;
 
     [System.NonSerialized]
-    public int score = 0;
+    public int score = 0; // we don't want this to show up in the inspector
 
     private bool countScoreState = false;
     public Vector3 boxSize;
     public float maxDistance;
     public LayerMask layerMask;
-    private Rigidbody2D marioBody;
-    private SpriteRenderer marioSprite;
-    private bool faceRightState = true;
-    public GameObject enemies;
-
+    // Start is called before the first frame update
     void Start()
     {
-        // Initialize components
-        marioBody = GetComponent<Rigidbody2D>();
-        marioSprite = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -76,28 +70,10 @@ public class JumpOverGoomba : MonoBehaviour
             return false;
         }
     }
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     }
 
-    public void ResetGame()
-    {
-        // reset position
-        marioBody.transform.position = new Vector3(-5.33f, -4.69f, 0.0f);
-        // reset sprite direction
-        faceRightState = true;
-        marioSprite.flipX = false;
-        // reset score
-        scoreText.text = "Score: 0";
-        // reset Goomba
-        foreach (Transform eachChild in enemies.transform)
-        {
-            eachChild.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
-        }
-        // reset score
-        score = 0;
-    }
 }

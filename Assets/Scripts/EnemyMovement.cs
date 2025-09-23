@@ -17,7 +17,6 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
-        // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
     }
@@ -29,44 +28,23 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);
     }
-
-    // note that this is Update(), which still works but not ideal. See below.
-    void Update()
+    void FixedUpdate()
     {
         if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
-        {// move goomba
+        {
             Movegoomba();
         }
         else
         {
-            // change direction
             moveRight *= -1;
             ComputeVelocity();
             Movegoomba();
         }
     }
 
-    void FixedUpdate() {
-        enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);
-    }
-
-
     void OnTriggerEnter2D(Collider2D other)
     {
-     Debug.Log(other.gameObject.name);
-    }
-
-    // Add this method to EnemyMovement.cs
-    public void ResetEnemy()
-    {
-        // Reset position
-        transform.position = startPosition;
-        // Reset patrol variables
-        originalX = startPosition.x;
-        moveRight = -1;
-        // Reset physics
-        enemyBody.linearVelocity = Vector2.zero;
-        ComputeVelocity();
+        Debug.Log(other.gameObject.name);
     }
 }
 
