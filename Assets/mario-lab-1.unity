@@ -3998,7 +3998,6 @@ GameObject:
   - component: {fileID: 1865520484}
   - component: {fileID: 1865520483}
   - component: {fileID: 1865520482}
-  - component: {fileID: 1865520485}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -4066,23 +4065,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1865520485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865520481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce98d0384eb204ffea0ef55674854dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManagerScript
-  finalScoreText: {fileID: 0}
-  gameOverUI: {fileID: 1865520481}
-  gameStartScore: {fileID: 0}
-  gameStartResetButton: {fileID: 0}
-  jumpOverGoomba: {fileID: 0}
 --- !u!1 &1884124051
 GameObject:
   m_ObjectHideFlags: 0
