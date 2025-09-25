@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 205855343}
   m_Layer: 3
   m_Name: 'Question '
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 209888977}
   m_Layer: 3
   m_Name: Question
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 583235532}
   m_Layer: 3
   m_Name: Bricks
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1385,7 +1385,7 @@ GameObject:
   - component: {fileID: 697558214}
   - component: {fileID: 697558216}
   - component: {fileID: 697558215}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe_Head (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1499,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1758714480, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1788,7 +1788,7 @@ GameObject:
   - component: {fileID: 902226563}
   m_Layer: 3
   m_Name: Bricks
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2152,7 +2152,7 @@ GameObject:
   - component: {fileID: 991428316}
   - component: {fileID: 991428314}
   - component: {fileID: 991428317}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Goomba_left
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2190,6 +2190,12 @@ MonoBehaviour:
   enemyPatroltime: 2.5
   startPosition: {x: 0.1, y: 10.7, z: 0}
   gravityForce: -5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 9
+  checkMultiplier: 1
+  gameManager: {fileID: 85330347}
+  score: 0
 --- !u!61 &991428315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3114,7 +3120,7 @@ GameObject:
   - component: {fileID: 1529414057}
   m_Layer: 3
   m_Name: Question
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3914,7 +3920,7 @@ GameObject:
   - component: {fileID: 1846783797}
   m_Layer: 3
   m_Name: Bricks
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4510,9 +4516,9 @@ GameObject:
   - component: {fileID: 1884124055}
   - component: {fileID: 1884124057}
   - component: {fileID: 1884124058}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Mario
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4638,6 +4644,8 @@ MonoBehaviour:
   enemies: {fileID: 1121215539}
   jumpOverGoomba: {fileID: 1884124058}
   gameManager: {fileID: 85330347}
+  dashSpeed: 40
+  dashDuration: 0.15
 --- !u!61 &1884124057
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4698,11 +4706,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JumpOverGoomba
   enemyLocation: {fileID: 991428313}
   scoreText: {fileID: 998806112}
-  boxSize: {x: 0.5, y: 1, z: 0}
-  maxDistance: 0.5
+  boxSize: {x: 0.73, y: 0.9, z: 0}
+  maxDistance: -0.01
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 4
 --- !u!1 &1902997776
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,6 +4882,37 @@ Transform:
   - {fileID: 1875732737}
   - {fileID: 450951394}
   - {fileID: 697558214}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2022694382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2022694383}
+  m_Layer: 0
+  m_Name: BulletBill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2022694383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022694382}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.40476, y: 1.12138, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2039339619
@@ -5116,7 +5155,7 @@ GameObject:
   - component: {fileID: 2132537942}
   m_Layer: 3
   m_Name: Question
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5255,3 +5294,4 @@ SceneRoots:
   - {fileID: 1677611016}
   - {fileID: 85330348}
   - {fileID: 1864752010}
+  - {fileID: 2022694383}
