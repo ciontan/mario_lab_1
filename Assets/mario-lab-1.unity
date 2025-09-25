@@ -4516,6 +4516,7 @@ GameObject:
   - component: {fileID: 1884124055}
   - component: {fileID: 1884124057}
   - component: {fileID: 1884124058}
+  - component: {fileID: 1884124059}
   m_Layer: 5
   m_Name: Mario
   m_TagString: Player
@@ -4704,6 +4705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58a567ab4c2f4d73977c5703656b73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumpOverGoomba
+  gameManager: {fileID: 85330347}
   enemyLocation: {fileID: 991428313}
   scoreText: {fileID: 998806112}
   boxSize: {x: 0.73, y: 0.9, z: 0}
@@ -4711,6 +4713,23 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4
+  bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1884124059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884124051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59a8ec25b9e9c642b508ee7e94b2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletSpawner
+  bullet: {fileID: 2505949130938621694, guid: 11dc2dcec9158f949a997e815aebf5ea, type: 3}
+  spawnInterval: 4
 --- !u!1 &1902997776
 GameObject:
   m_ObjectHideFlags: 0
@@ -4882,37 +4901,6 @@ Transform:
   - {fileID: 1875732737}
   - {fileID: 450951394}
   - {fileID: 697558214}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2022694382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2022694383}
-  m_Layer: 0
-  m_Name: BulletBill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2022694383
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022694382}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.40476, y: 1.12138, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2039339619
@@ -5294,4 +5282,3 @@ SceneRoots:
   - {fileID: 1677611016}
   - {fileID: 85330348}
   - {fileID: 1864752010}
-  - {fileID: 2022694383}
