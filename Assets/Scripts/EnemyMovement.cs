@@ -28,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
     public int checkMultiplier;
     private Vector3 offsetVector;
     public GameManagerScript gameManager;
+    public int score = 0;
 
     void Start()
     {
@@ -132,6 +133,7 @@ public class EnemyMovement : MonoBehaviour
         {
             // Set vertical velocity to 0.25 when colliding with the player
             verticalVelocity = 9f;
+            score++;
         }
         else if (other.CompareTag("Ground"))
         {
@@ -149,7 +151,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 gameManager.gameOver();
-                
+
             }
         }
     }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using Unity.VisualScripting;
 
 public class JumpOverGoomba : MonoBehaviour
 {
@@ -16,6 +18,9 @@ public class JumpOverGoomba : MonoBehaviour
     public Vector3 boxSize;
     public float maxDistance;
     public LayerMask layerMask;
+    private Boolean canCheckGoomba = true;
+    private Boolean isOverlapped;
+    private Boolean lastOverlapped;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,30 +30,13 @@ public class JumpOverGoomba : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-    }
-
-    void FixedUpdate()
-    {
-        // mario jumps
-        if (Input.GetKeyDown("space") && onGroundCheck())
+        isOverlapped = checkGoombaAbove();
+        if (!lastOverlapped && isOverlapped)
         {
-            onGroundState = false;
-            countScoreState = true;
+            score++;
+            scoreText.text = "Score: " + score.ToString();
         }
-
-        // when jumping, and Goomba is near Mario and we haven't registered our score
-        if (!onGroundState && countScoreState)
-        {
-            if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
-            {
-                countScoreState = false;
-                score++;
-                scoreText.text = "Score: " + score.ToString();
-                Debug.Log(score);
-            }
-        }
+        lastOverlapped = isOverlapped;
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -57,16 +45,16 @@ public class JumpOverGoomba : MonoBehaviour
     }
 
 
-    private bool onGroundCheck()
+    private bool checkGoombaAbove()
     {
-        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask))
+        if (Physics2D.BoxCast(transform.position + new Vector3(0,1,0), boxSize, 0, transform.up, maxDistance, layerMask))
         {
-            Debug.Log("on ground");
+            Debug.Log("goomba touched");
             return true;
         }
         else
         {
-            Debug.Log("not on ground");
+            Debug.Log("goommba not touched");
             return false;
         }
     }
