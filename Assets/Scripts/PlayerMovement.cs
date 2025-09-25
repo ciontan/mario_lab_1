@@ -5,11 +5,11 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 20;
-    public float maxSpeed = 20;
-    public float jumpForce = 20f;
-    public float holdForce = 6f;
-    public float maxJumpVelocity = 25f;
+    public float speed = 70;
+    public float maxSpeed = 80;
+    public float jumpForce = 30f;
+    public float holdForce = 10f;
+    public float maxJumpVelocity = 20f;
     private bool isJumping = false;
     private bool onGroundState = true;
     private Rigidbody2D marioBody;
