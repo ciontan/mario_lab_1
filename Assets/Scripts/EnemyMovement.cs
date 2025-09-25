@@ -149,7 +149,6 @@ public class EnemyMovement : MonoBehaviour
             // Check if the ground layer is water
             if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
             {
-                Time.timeScale = 0.0f;
                 gameManager.gameOver();
 
             }

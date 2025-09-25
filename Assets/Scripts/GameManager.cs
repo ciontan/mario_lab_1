@@ -29,6 +29,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void gameOver()
     {
+        Time.timeScale = 0.0f;
         gameOverUI.SetActive(true);
         gameStartResetButton.SetActive(false);
         gameStartScore.SetActive(false);

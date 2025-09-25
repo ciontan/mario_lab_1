@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 
 public class JumpOverGoomba : MonoBehaviour
 {
+    public GameManagerScript gameManager;
     public Transform enemyLocation;
     public TextMeshProUGUI scoreText;
     private bool onGroundState;
@@ -16,8 +17,9 @@ public class JumpOverGoomba : MonoBehaviour
 
     private bool countScoreState = false;
     public Vector3 boxSize;
-    public float maxDistance;
+    public float maxDistance; 
     public LayerMask layerMask;
+    public LayerMask bulletLayerMask;
     private Boolean canCheckGoomba = true;
     private Boolean isOverlapped;
     private Boolean lastOverlapped;
@@ -30,6 +32,7 @@ public class JumpOverGoomba : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkBulletAbove();
         isOverlapped = checkGoombaAbove();
         if (!lastOverlapped && isOverlapped)
         {
@@ -49,13 +52,19 @@ public class JumpOverGoomba : MonoBehaviour
     {
         if (Physics2D.BoxCast(transform.position + new Vector3(0,1,0), boxSize, 0, transform.up, maxDistance, layerMask))
         {
-            Debug.Log("goomba touched");
             return true;
         }
         else
         {
-            Debug.Log("goommba not touched");
             return false;
+        }
+    }
+
+    private void checkBulletAbove()
+    {
+        if (Physics2D.BoxCast(transform.position + new Vector3(0,1,0), boxSize, 0, transform.up, maxDistance, bulletLayerMask))
+        {
+            gameManager.gameOver();
         }
     }
     void OnDrawGizmos()

@@ -417,7 +417,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -439,7 +439,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -448,6 +448,28 @@ TextureImporter:
       bones: []
       spriteID: cc3e72804108344298ed60f23e51c9b5
       internalID: -1204056370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulletbill
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 438
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976a4b804ffe18d45a793d6aeba6b182
+      internalID: -6313882
       vertices: []
       indices: 
       edges: []
@@ -481,6 +503,7 @@ TextureImporter:
       Pipe_1: 1758714480
       Pipe_extend: 1763963889
       Question_box: -1225447665
+      bulletbill: -6313882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
